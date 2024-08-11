@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+    --vibrant-orange: rgb(255, 106, 0);
+    --light-orange: rgba(252, 100, 0, 1);
+    --light-gray: #f5f5f5;
+    --dark-gray: rgba(68, 68, 68, 1);
+    --white: #ffffff;
+    --black: rgba(0, 0, 0, 1);
+    --light-black: rgba(51, 51, 51, 1);
+    --red: rgba(255, 0, 0, 1);
+}
+
+
+.restaurants-container {
+    padding: 25px;
+    background-color: var(--light-gray);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.restaurants-container h1 {
+    color: var(--vibrant-orange);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.restaurants-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+
+.restaurant-card {
+    display: flex;
+    background-color: var(--white);
+    border: 1px solid var(--light-gray);
+    padding: 10px;
+    width: 75vw;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    border-radius: 5px;
+}
+
+.restaurant-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    /* transition: all 0.3s ease; */
+    cursor: pointer;
+}
+/* 
+.restaurant-card:hover p,
+.restaurant-card:hover h3 {
+    color: white;
+} */
+
+.restaurant-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    background-color: #f5f5f5;
+    padding: 0;
+}
+
+.restaurant-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.restaurant-card h3 {
+    font-size: 20px;
+    color: var(--dark-gray);
+}
+
+.restaurant-card p {
+    font-size: 16px;
+    color: var(--light-black);
+}
+.add-restaurant-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: var(--vibrant-orange);
+    color: var(--white);
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-input {
+    width: 95%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid var(--light-gray);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}

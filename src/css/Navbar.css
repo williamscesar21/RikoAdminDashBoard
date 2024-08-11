@@ -1,0 +1,110 @@
+:root {
+    --vibrant-orange: rgb(255, 106, 0);
+    --light-orange: rgba(252, 100, 0, 1);
+    --light-gray: rgba(204, 204, 204, 1);
+    --dark-gray: rgba(68, 68, 68, 1);
+    --black: rgba(0, 0, 0, 1);
+    --light-black: rgba(51, 51, 51, 1);
+    --red: rgba(255, 0, 0, 1);
+    --white: #ffffff;
+  }
+
+.navbar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--white);
+    color: var(--white);
+    height: 100vh;
+    width: 250px;
+    padding: 40px 0px;
+    /* border-right: solid 2px var(--light-orange); */
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    color: black;
+}
+
+.contentNav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.contentNav ul li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: baseline;
+    cursor: pointer;
+    list-style: none;
+    margin-bottom: 10px;
+    padding: 5px 40px;
+    border-radius:10px;
+    color: var(--light-black);
+    background-color: var(--white) ;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.contentNav ul li:hover{
+    color: var(--white);
+    background-color: var(--vibrant-orange);
+}
+
+.contentNav ul li.active {
+    background-color: var(--vibrant-orange);
+    color: var(--white);
+  }
+
+.logout{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    list-style: none;
+    margin-bottom: 10px;
+    width: 200px;
+    padding: 5px 40px;
+    border-radius:10px;
+    border: solid 1px var(--light-orange);
+    color: var(--light-black);
+    background-color: var(--white) ;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.logout:hover{
+    color: var(--white);
+    background-color: var(--vibrant-orange);
+    border: solid 1px var(--white);
+} 
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark-gray);
+}
+
+.rights{
+    font-size: 10px;
+}
+
+.link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.username{
+    margin-top: 10px;
+    font-size: 20px;
+}

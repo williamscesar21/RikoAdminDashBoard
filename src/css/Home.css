@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --vibrant-orange2: rgb(255, 72, 0);
+  --light-orange: rgba(252, 100, 0, 1);
+  --light-gray: rgb(231, 231, 231);
+  --dark-gray: rgba(68, 68, 68, 1);
+  --white: #ffffff;
+  --black: rgba(0, 0, 0, 1);
+  --light-black: rgba(51, 51, 51, 1);
+  --red: rgba(255, 0, 0, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.home-container {
+  padding: 20px;
+  background-color: var(--light-orange);
+  /* border-radius: 30px; */
+  height: 95vh;
+  width: 98.5%;
+  margin-top: 15px;
+  position: relative;
+}
+
+.welcome-section {
+  margin-bottom: 20px;
+}
+
+.welcome-section h1 {
+  font-size: 24px;
+  color: var(--white);
+}
+
+.welcome-section p {
+  font-size: 16px;
+  color: var(--light-gray);
+}
+
+.clock-section {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.clock {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--black);
+  background-color: var(--white);
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.info-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.board {
+  background-color: var(--white);
+  border: 1px solid var(--light-gray);
+  padding: 20px;
+  flex: 1 1 calc(25% - 40px); /* Adjust the percentage based on the number of boards you have */
+  text-align: center;
+}
+
+.board h3 {
+  font-size: 18px;
+  background-color: var(--vibrant-orange2);
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: var(--white);
+}
+
+.board p {
+  font-size: 24px;
+  color: var(--dark-gray);
+  font-weight: bold;
+}

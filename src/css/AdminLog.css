@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --vibrant-orange: rgb(255, 106, 0);
+  --light-orange: rgba(252, 100, 0, 1);
+  --light-gray: rgba(204, 204, 204, 1);
+  --dark-gray: rgba(68, 68, 68, 1);
+  --black: rgba(0, 0, 0, 1);
+  --light-black: rgba(51, 51, 51, 1);
+  --red: rgba(255, 0, 0, 1);
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--light-orange);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+  min-width: 400px;
+  margin: 0 16px;
+  background-color: transparent;
+  border-radius: 30px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.content {
+  width: 100%;
+  padding: 32px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  height: 48px;
+  object-fit: cover;
+}
+
+.title {
+  margin-top: 24px;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--white);
+}
+
+.subtitle {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--white);
+}
+
+.tabs-container {
+  margin-bottom: 16px;
+  background-color: var(--white) ;
+  padding: 16px;
+  border-radius: 20px;
+}
+
+.tabs-list {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.tabs-trigger {
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  transition: color 0.3s, font-weight 0.3s, border-radius 0.8s;
+}
+
+.tabs-trigger.active {
+  font-weight: bold;
+  background-color: var(--light-orange);
+  color: var(--white);
+  border-radius: 15px;
+}
+
+.tabs-content {
+  transition: opacity 0.3s;
+}
+
+.tabs-content > div {
+  display: none;
+}
+
+.tabs-content > .form {
+  display: block;
+}
+
+.form {
+  margin-bottom: 16px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--light-orange);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--light-gray);
+  border-radius: 4px;
+  transition: border-radius 0.5s, border-color 2s;
+}
+
+.form-group input:focus {
+  border-color: var(--vibrant-orange);
+  outline: none;
+  border-radius: 15px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--light-orange);
+  color: var(--white);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  border: solid 1px var(--white);
+}
+
+.submit-button:hover {
+  background-color: var(--white);
+  color: var(--light-orange);
+  border: solid 1px var(--light-orange);
+}

@@ -1,0 +1,90 @@
+.add-repartidor-container {
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-repartidor-container h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.add-repartidor-container form {
+    background-color: #ffffff;
+    border: 1px solid #e7e7e7;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 95%;
+}
+
+.add-repartidor-container form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.add-repartidor-container form input,
+.add-repartidor-container form textarea,
+.add-repartidor-container form select {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #e7e7e7;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.add-repartidor-container form button {
+    background-color: #ff6a00;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.add-repartidor-container form button:hover {
+    background-color: #e65c00;
+}
+
+.image-upload-container {
+    border: 2px dashed #e7e7e7;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.image-upload-container:hover {
+    border-color: #ff6a00;
+}
+
+.image-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+.image-preview {
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}

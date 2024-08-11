@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+    --vibrant-orange: rgb(255, 106, 0);
+    --light-gray: rgb(231, 231, 231);
+    --dark-gray: rgba(68, 68, 68, 1);
+    --white: #ffffff;
+    --black: rgba(0, 0, 0, 1);
+    --light-black: rgba(51, 51, 51, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.add-restaurant-container {
+    padding: 20px;
+    background-color: var(--light-gray);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-restaurant-container h1 {
+    font-size: 24px;
+    color: var(--vibrant-orange);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.add-restaurant-container form {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.add-restaurant-container label {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    color: var(--black);
+    margin-bottom: 10px;
+}
+
+.add-restaurant-container input, 
+.add-restaurant-container textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.add-restaurant-container textarea {
+    resize: vertical;
+}
+
+.add-restaurant-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: var(--white);
+    background-color: var(--vibrant-orange);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    align-self: flex-end;
+}
+
+.add-restaurant-container button:hover {
+    background-color: var(--light-orange);
+}
+
+.horario-container {
+    margin-top: 20px;
+}
+
+.horario-container h3 {
+    font-size: 18px;
+    color: var (--black);
+    margin-bottom: 10px;
+}
+
+.horario-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.horario-item label {
+    width: 80px;
+}
+
+.horario-item input[type="time"] {
+    flex: 1;
+}
+
+.horario-item span {
+    color: var(--black);
+}

@@ -1,0 +1,61 @@
+.clients-container {
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clients-container h1 {
+    font-size: 24px;
+    color: #ff6a00;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.clients-table {
+    width: 95%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+.clients-table th, .clients-table td {
+    border: 1px solid #e7e7e7;
+    padding: 10px;
+    text-align: left;
+}
+
+.clients-table th {
+    background-color: #ff6a00;
+    color: white;
+}
+
+.clients-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.add-client-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff6a00;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    text-decoration: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.add-client-button:hover {
+    background-color: #ff8a33;
+}

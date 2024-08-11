@@ -1,0 +1,208 @@
+.restaurant-screen-container {
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.restaurant-screen-container h1 {
+    font-size: 36px;
+    color: #ffffff;
+}
+
+.restaurant-screen-image {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.restaurant-screen-info {
+    background-color: #ffffff;
+    border: 1px solid #e7e7e7;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    text-align: left;
+}
+
+.restaurant-screen-info p {
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.restaurant-screen-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.restaurant-screen-info ul li {
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 5px;
+}
+
+.resScreenHeader{
+    display: flex;
+    align-items:flex-start;
+    justify-content: baseline;
+    width: 100%;
+    background-color: #ff6a00;
+    color: #f5f5f5;
+    padding: 20px;
+}
+
+.restaurant-name{
+    font-size: 32px;
+    font-weight: bold;
+    margin-right: 20px;
+    color: #f5f5f5;
+    background-color: #ff6a00;
+    border: none;
+}
+.restaurant-name:focus{
+    outline: none;
+}
+
+.resScreenHeader p{
+    color: #000000;
+}
+.resScreenContent p{
+    color: #000000;
+}
+
+.resScreenHeader .restaurant-location,
+.resScreenHeader .restaurant-description {
+    background-color: #ff8f3f;
+    font-size: 20px;
+    border: none;
+    resize: none;
+}
+
+.restaurant-description{
+    width: 700px;
+}
+
+.resScreenHeader .restaurant-location:focus,
+.resScreenHeader .restaurant-description:focus {
+    outline: none;
+}
+
+.resScreenContent input {
+    background-color: #d3d3d3;
+    font-size: 18px;
+    border: none;
+    resize: none;
+    /* width: 400px;
+    height: 30px; */
+}
+
+.resScreenContent input:focus {
+    outline: none;
+}
+    
+
+.resScreenContent{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.horario-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 40px;
+}
+
+.horario-table th, .horario-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.horario-table th {
+    background-color: #ff6a00;
+    color: white;
+}
+
+.horario-table td {
+    font-size: 16px;
+    color: #333333;
+}
+
+.edit-restaurant-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: blue;
+    color: var(--white);
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cancel-edit-restaurant-button {
+    position: fixed;
+    bottom: 20px;
+    right: 100px;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: rgb(255, 0, 0);
+    color: var(--white);
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.update-password-button{
+    background-color: #ff6a00;
+    color: #f5f5f5;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.update-password-input{
+    background-color: #ececec;
+    font-size: 18px;
+    border: none;
+    resize: none;
+    width: 400px;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.products-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    justify-content: center;
+}
