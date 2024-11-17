@@ -85,13 +85,23 @@ body {
 }
 
 .tabs-trigger {
-  border: none;
+  border: 1px solid white;
   padding: 8px 16px;
   cursor: pointer;
   font-size: 16px;
   background-color: #ffffff;
   border-radius: 5px;
   transition: color 0.3s, font-weight 0.3s, border-radius 0.8s;
+  color: var(--vibrant-orange);
+  font-weight: bold;
+}
+
+.tabs-trigger:hover {
+  color: var(--vibrant-orange);
+  font-weight: bold;
+  background-color: var(--white);
+  border: 1px solid var(--vibrant-orange);
+  border-radius: 15px;
 }
 
 .tabs-trigger.active {
