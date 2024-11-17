@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import '../css/RestaurantScreen.css';
 import Loading from "./Loading";
-import { FaLocationDot, FaPencil, FaCheck } from "react-icons/fa6";
+import { FaLocationDot, FaPencil, FaCheck, FaTrash } from "react-icons/fa6";
 import { FaStar, FaTimesCircle } from "react-icons/fa";
 import Notificacion from "./Notificacion";
 import ProductCard from './ProductCard';
@@ -203,6 +203,52 @@ const RestaurantScreen = () => {
             });
     };
 
+    const handleDeleteRestaurant = () => {
+        const password = prompt('Por favor, ingrese la contraseña para eliminar este restaurante:');
+    
+        if (password !== '3149196816043108') {
+            alert('Contraseña incorrecta. No se puede eliminar el restaurante.');
+            return;
+        }
+    
+        if (!confirm('¿Estás seguro de que quieres eliminar este restaurante? Esta acción es irreversible.')) {
+            return;
+        }
+    
+        setNotification({
+            visible: true,
+            mensaje: 'Eliminando restaurante...',
+            tipo: 'procesando'
+        });
+    
+        axios.delete(`https://rikoapi.onrender.com/api/restaurant/restaurant/${id}`)
+            .then(response => {
+                setNotification({
+                    visible: true,
+                    mensaje: 'Restaurante eliminado exitosamente',
+                    tipo: 'exitoso'
+                });
+                setTimeout(() => {
+                    setNotification({
+                        visible: false,
+                        mensaje: '',
+                        tipo: ''
+                    });
+                    navigate('/restaurants'); // Redirige a la lista de restaurantes
+                }, 3000);
+                window.location.href = '/restaurantes';
+            })
+            .catch(error => {
+                console.error("There was an error deleting the restaurant!", error);
+                setNotification({
+                    visible: true,
+                    mensaje: 'Error al eliminar el restaurante. Inténtelo de nuevo',
+                    tipo: 'error'
+                });
+            });
+    };
+    
+
     if (!restaurant) return <div><Loading /></div>;
 
     return (
@@ -339,15 +385,24 @@ const RestaurantScreen = () => {
                             ))}
                     </div>
                 </div>
-                <div className="edit-restaurant-button">
+                <div className="edit-client-buttons">
                     {isEditing ? (
                         <>
-                            <div onClick={handleSaveClick}><FaCheck /></div>
-                            <div className="cancel-edit-restaurant-button" onClick={handleCancelEdit}><FaTimesCircle /></div>
+                            <button className="cancel-edit-client-button" onClick={handleCancelEdit}>
+                                <FaTimesCircle /> 
+                            </button>
+                            <button className="save-edit-client-button" onClick={handleSaveClick}>
+                                <FaCheck />
+                            </button>
                         </>
                     ) : (
-                        <div onClick={handleEditClick}><FaPencil /></div>
+                        <button className="edit-client-button" onClick={handleEditClick}>
+                            <FaPencil />
+                        </button>
                     )}
+                    <button className="cancel-edit-client-button" onClick={handleDeleteRestaurant}>
+                        <FaTrash /> 
+                    </button>
                 </div>
             </div>
         </div>

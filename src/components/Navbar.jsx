@@ -15,8 +15,8 @@ const Navbar = () => {
     { name: "Restaurantes", path: "/restaurantes" },
     { name: "Repartidores", path: "/repartidores" },
     { name: "Productos", path: "/productos" },
-    { name: "Billeteras", path: "/billeteras" },
-    { name: "Transacciones", path: "/transacciones" }
+    { name: "Billeteras", path: "/wallets" },
+    { name: "Pedidos", path: "/pedidos" }
   ];
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="header">
-        <img src="/logoNaranja.png" alt="Logo" className="logo" />
+        <img onClick={() => window.location.href="/"} src="/logoNaranja.png" alt="Logo" className="logo" />
         <p className="username">{username}</p>
       </div>
       <div className="contentNav">
