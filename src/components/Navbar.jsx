@@ -2,21 +2,26 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import '../css/Navbar.css';
 import Cookies from 'js-cookie';
+import {
+  FaHome, FaUserShield, FaUsers, FaStore, FaMotorcycle,
+  FaBoxOpen, FaWallet, FaShoppingBag, FaBars, FaTimes
+} from 'react-icons/fa';
 
 const Navbar = () => {
   const [activeList, setActiveList] = useState(null);
   const [username, setUsername] = useState(Cookies.get('username') || 'Usuario');
+  const [isOpen, setIsOpen] = useState(true); // Estado para mostrar u ocultar el navbar
   const location = useLocation();
 
   const paths = [
-    { name: "Inicio", path: "/" },
-    { name: "Admins", path: "/admins" },
-    { name: "Clientes", path: "/clientes" },
-    { name: "Restaurantes", path: "/restaurantes" },
-    { name: "Repartidores", path: "/repartidores" },
-    { name: "Productos", path: "/productos" },
-    { name: "Billeteras", path: "/wallets" },
-    { name: "Pedidos", path: "/pedidos" }
+    { name: "Inicio", path: "/", icon: <FaHome /> },
+    { name: "Admins", path: "/admins", icon: <FaUserShield /> },
+    { name: "Clientes", path: "/clientes", icon: <FaUsers /> },
+    { name: "Restaurantes", path: "/restaurantes", icon: <FaStore /> },
+    { name: "Repartidores", path: "/repartidores", icon: <FaMotorcycle /> },
+    { name: "Productos", path: "/productos", icon: <FaBoxOpen /> },
+    { name: "Billeteras", path: "/wallets", icon: <FaWallet /> },
+    { name: "Pedidos", path: "/pedidos", icon: <FaShoppingBag /> }
   ];
 
   useEffect(() => {
@@ -46,26 +51,37 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar">
+    <div className={`navbar ${isOpen ? 'open' : 'closed'}`}>
+      {/* <button className="toggle-btn" onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? <FaTimes /> : <FaBars />}
+      </button> */}
+
       <div className="header">
-        <img onClick={() => window.location.href="/"} src="/logoNaranja.png" alt="Logo" className="logo" />
-        <p className="username">{username}</p>
+        <img onClick={() => window.location.href="/"} src="/logoNaranja.png" alt="Logo" className="logo" style={{ width: isOpen ? '100px' : '50px' }}/>
+        {isOpen && <p className="username">{username}</p>}
       </div>
+
       <div className="contentNav">
         <ul>
           {paths.map((item, index) => (
             <Link className="link" to={item.path} key={index} onClick={() => handleItemClick(index)}>
               <li className={activeList === index ? 'active' : ''}>
-                {item.name}
+                <span className="icon" style={{ marginRight: isOpen ? '10px' : '0' }}>{item.icon}</span>
+                {isOpen && <span className="text">{item.name}</span>}
               </li>
             </Link>
           ))}
         </ul>
       </div>
+
       <div className="footer">
-        <button className="logout" onClick={handleLogout}>Cerrar sesión</button>
-        <p>&copy; Riko 2024</p>
-        <p className="rights">Todos los derechos reservados</p>
+        {isOpen && (
+          <>
+            <button className="logout" onClick={handleLogout}>Cerrar sesión</button>
+            <p>&copy; Riko 2024</p>
+            <p className="rights">Todos los derechos reservados</p>
+          </>
+        )}
       </div>
     </div>
   );
