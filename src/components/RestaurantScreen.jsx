@@ -381,10 +381,8 @@ const RestaurantScreen = () => {
                         restaurant={restaurant}
                         isEditing={isEditing}
                     />
-                </div>
-                
-                <div className="products-section">
-                    <h2>Productos</h2>
+                    <div style={{ display: 'flex', justifyContent: 'center', width: '100%', flexDirection: 'column' }} className="products-section">
+                    <h2 style={{ textAlign: 'center', marginTop: '20px' }}>Productos</h2>
                     <br />
                     <div className="products-grid">
                         {products
@@ -394,6 +392,9 @@ const RestaurantScreen = () => {
                             ))}
                     </div>
                 </div>
+                </div>
+                
+                
                 <div className="edit-client-buttons">
                     {isEditing ? (
                         <>
