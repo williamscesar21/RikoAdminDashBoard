@@ -8,6 +8,7 @@ import { FaStar, FaTimesCircle } from "react-icons/fa";
 import Notificacion from "./Notificacion";
 import ProductCard from './ProductCard';
 import RestaurantImage from "./RestaurantImage";
+import PagoMovilForm from "./PagoMovilForm";
 
 const RestaurantScreen = () => {
     const { id } = useParams();
@@ -373,6 +374,12 @@ const RestaurantScreen = () => {
                         placeholder="Password"
                     />
                     <button className="update-password-button" onClick={handleUpdatePassword}>Actualizar Password</button>
+                    <PagoMovilForm
+                        id={id}
+                        setNotification={setNotification}
+                        setRestaurant={setRestaurant}
+                        restaurant={restaurant}
+                    />
                 </div>
                 <div className="products-section">
                     <h2>Productos</h2>
