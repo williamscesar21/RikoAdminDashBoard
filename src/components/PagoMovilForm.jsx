@@ -29,7 +29,7 @@ const venezuelanBanks = [
     { code: '0191', name: 'Banco Nacional de Crédito, C.A. Banco Universal' }
 ];
 
-const PagoMovilForm = ({ id, setNotification, setRestaurant, restaurant }) => {
+const PagoMovilForm = ({ id, setNotification, setRestaurant, restaurant, isEditing }) => {
     const [formFields, setFormFields] = useState({
         telefonoPagoMovil: restaurant?.pagoMovil?.telefono || '',
         cedulaPagoMovil: restaurant?.pagoMovil?.cedula || '',
@@ -76,7 +76,7 @@ const PagoMovilForm = ({ id, setNotification, setRestaurant, restaurant }) => {
         });
 
         // Enviar la solicitud al endpoint de Pago Móvil
-        axios.put(`https://rikoapi.onrender.com/api/restaurant/restaurant-pago-movil/${id}`, {
+        axios.post(`https://rikoapi.onrender.com/api/restaurant/restaurant-pago-movil/${id}`, {
             telefono: telefonoPagoMovil,
             cedula: cedulaPagoMovil,
             banco: bancoPagoMovil,
@@ -185,7 +185,8 @@ const PagoMovilForm = ({ id, setNotification, setRestaurant, restaurant }) => {
     return (
         <div className="pago-movil-section">
             <h2>Datos de Pago Móvil</h2>
-            <form onSubmit={restaurant?.pagoMovil ? actualizarPagoMovil : handleAddPagoMovil}>
+            {isEditing && (
+                            <div>
                 <div className="form-group">
                     <label htmlFor="telefonoPagoMovil">Teléfono:</label>
                     <input
@@ -225,10 +226,12 @@ const PagoMovilForm = ({ id, setNotification, setRestaurant, restaurant }) => {
                         ))}
                     </select>
                 </div>
-                <button type="submit" className="add-pago-movil-button">
+                <button onClick={restaurant?.pagoMovil ? actualizarPagoMovil : handleAddPagoMovil} className="add-pago-movil-button">
                     {restaurant?.pagoMovil ? 'Actualizar Pago Móvil' : 'Agregar Pago Móvil'}
                 </button>
-            </form>
+            </div>
+            )}
+
             {restaurant?.pagoMovil && (
                 <div className="pago-movil-details">
                     <p><strong>Teléfono Pago Móvil:</strong> {restaurant.pagoMovil.telefono}</p>

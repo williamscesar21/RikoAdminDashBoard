@@ -93,7 +93,7 @@ const AddRestaurant = () => {
         }
     };
 
-    if (!isMapLoaded) return <div>Cargando mapa...</div>;
+    // if (!isMapLoaded) return <div>Cargando mapa...</div>;
 
     return (
         <div className="add-restaurant-container">

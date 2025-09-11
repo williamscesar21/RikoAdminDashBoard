@@ -374,13 +374,15 @@ const RestaurantScreen = () => {
                         placeholder="Password"
                     />
                     <button className="update-password-button" onClick={handleUpdatePassword}>Actualizar Password</button>
-                    <PagoMovilForm
+               <PagoMovilForm
                         id={id}
                         setNotification={setNotification}
                         setRestaurant={setRestaurant}
                         restaurant={restaurant}
+                        isEditing={isEditing}
                     />
                 </div>
+                
                 <div className="products-section">
                     <h2>Productos</h2>
                     <br />
