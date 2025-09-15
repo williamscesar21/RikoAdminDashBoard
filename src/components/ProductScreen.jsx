@@ -19,6 +19,7 @@ const ProductScreen = () => {
         descripcion: '',
         precio: '',
         tags: [],
+        suspendido: null
     });
     const availableTags = ['Desayuno', 'Almuerzo', 'Cena', 'Bebida', 'Postre', 'Comida Rapida', 'Comida Gourmet', 'Nutricional'];
 
@@ -38,6 +39,7 @@ const ProductScreen = () => {
                     descripcion: response.data.descripcion,
                     precio: response.data.precio,
                     tags: response.data.tags,
+                    suspendido: response.data.suspendido
                 });
                 return axios.get(`https://rikoapi.onrender.com/api/restaurant/restaurant/${response.data.id_restaurant}`);
             })
@@ -88,6 +90,7 @@ const ProductScreen = () => {
             descripcion: product.descripcion,
             precio: product.precio,
             tags: product.tags,
+            suspendido: product.suspendido
         });
     };
 
@@ -187,6 +190,21 @@ const ProductScreen = () => {
                         )}
                     </p>
                     <p><strong>Restaurante:</strong> <a href={`/restaurantes/${product.id_restaurant}`}>{restaurantName}</a></p>
+                    <div className="suspendido">
+                        <p><strong>Suspendido:</strong></p>
+                        {isEditing ? (
+                            <select
+                                name="suspendido"
+                                value={editableFields.suspendido}
+                                onChange={handleFieldChange}
+                            >
+                                <option value="true">Si</option>
+                                <option value="false">No</option>
+                            </select>
+                        ) : (
+                            <p>{product.suspendido ? 'Si' : 'No'}</p>
+                        )}
+                        </div>
                     <div className="product-tags">
                         <strong>Tags:</strong>
                         {isEditing ? (

@@ -22,7 +22,8 @@ const RestaurantScreen = () => {
         telefono: '',
         email: '',
         horario_de_trabajo: [],
-        password: ''
+        password: '',
+        suspendido: null
     });
     const [notification, setNotification] = useState({
         visible: false,
@@ -41,7 +42,8 @@ const RestaurantScreen = () => {
                     ubicacion: response.data.ubicacion,
                     telefono: response.data.telefono,
                     email: response.data.email,
-                    horario_de_trabajo: response.data.horario_de_trabajo
+                    horario_de_trabajo: response.data.horario_de_trabajo,
+                    suspendido: response.data.suspendido,
                 });
             })
             .catch(error => {
@@ -364,6 +366,21 @@ const RestaurantScreen = () => {
                     </p>
                     <p><strong>Creado el:</strong> {formatDate(restaurant.createdAt)}</p>
                     <p><strong>Actualizado el:</strong> {formatDate(restaurant.updatedAt)}</p>
+                    <div className="suspendido">
+                        <p><strong>Suspendido:</strong></p>
+                        {isEditing ? (
+                            <select
+                                name="suspendido"
+                                value={editableFields.suspendido}
+                                onChange={handleFieldChange}
+                            >
+                                <option value="true">Si</option>
+                                <option value="false">No</option>
+                            </select>
+                        ) : (
+                            <p>{restaurant.suspendido ? 'Si' : 'No'}</p>
+                        )}
+                        </div>
                     <p><strong>Actualizar Password:</strong></p>
                     <input
                         className="update-password-input"
