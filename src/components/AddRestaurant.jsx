@@ -82,7 +82,7 @@ const AddRestaurant = () => {
 
             axios.post('https://rikoapi.onrender.com/api/restaurant/restaurant', { ...restaurantData, images: [imageURL] })
                 .then(response => {
-                    window.location.reload();
+                    window.location.href = '/restaurantes';
                 })
                 .catch(error => {
                     console.error("There was an error adding the restaurant!", error);

@@ -57,7 +57,7 @@ const Restaurants = () => {
                     <div onClick={() => handleRestaurantClick(restaurant._id)} key={index} className="restaurant-card">
                         <RestaurantImage restaurant={restaurant} />
                         <div className="restaurant-info">
-                            <h2>{restaurant.nombre}</h2>
+                            <h2 style={{ cursor: 'pointer', textAlign: 'left' }}>{restaurant.nombre}</h2>
                             <p><FaPhone />  {restaurant.telefono}</p>
                             <p> <FaEnvelope />  {restaurant.email}</p>
                             <p> <FaMapMarkerAlt /> {restaurant.ubicacion}</p>
