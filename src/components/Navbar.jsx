@@ -10,7 +10,7 @@ import {
 const Navbar = () => {
   const [activeList, setActiveList] = useState(null);
   const [username, setUsername] = useState(Cookies.get('username') || 'Usuario');
-  const [isOpen, setIsOpen] = useState(true); // Estado para mostrar u ocultar el navbar
+  const [isOpen, setIsOpen] = useState(window.innerWidth >= 768); // abierto en desktop, cerrado en mobile
   const location = useLocation();
 
   const paths = [
@@ -39,6 +39,19 @@ const Navbar = () => {
     }
   }, [location.pathname]);
 
+  // Ajustar estado si cambia el tamaño de pantalla
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsOpen(true);  // en desktop se abre
+      } else {
+        setIsOpen(false); // en mobile se cierra
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const handleLogout = () => {
     Cookies.remove('token');
     Cookies.remove('username');
@@ -48,42 +61,67 @@ const Navbar = () => {
   const handleItemClick = (index) => {
     setActiveList(index);
     Cookies.set('activeList', index);
+    if (window.innerWidth < 768) {
+      setIsOpen(false);
+    }
   };
 
   return (
-    <div className={`navbar ${isOpen ? 'open' : 'closed'}`}>
-      {/* <button className="toggle-btn" onClick={() => setIsOpen(!isOpen)}>
+    <>
+      <button className="toggle-btn" onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? <FaTimes /> : <FaBars />}
-      </button> */}
+      </button>
 
-      <div className="header">
-        <img onClick={() => window.location.href="/"} src="/logoNaranja.png" alt="Logo" className="logo" style={{ width: isOpen ? '100px' : '50px' }}/>
-        {isOpen && <p className="username">{username}</p>}
-      </div>
+      {/* Overlay en mobile */}
+      <div
+        className={`navbar-overlay ${isOpen && window.innerWidth < 768 ? 'active' : ''}`}
+        onClick={() => setIsOpen(false)}
+      ></div>
 
-      <div className="contentNav">
-        <ul>
-          {paths.map((item, index) => (
-            <Link className="link" to={item.path} key={index} onClick={() => handleItemClick(index)}>
-              <li className={activeList === index ? 'active' : ''}>
-                <span className="icon" style={{ marginRight: isOpen ? '10px' : '0' }}>{item.icon}</span>
-                {isOpen && <span className="text">{item.name}</span>}
-              </li>
-            </Link>
-          ))}
-        </ul>
-      </div>
+      <div className={`navbar ${isOpen ? 'open' : 'closed'}`}>
+        <div className="header">
+          {isOpen &&
+          <img
+            onClick={() => window.location.href="/"}
+            src="/logoNaranja.png"
+            alt="Logo"
+            className="logo"
+            style={{ width: isOpen ? '100px' : '50px' }}
+          />}
+          {isOpen && <p className="username">{username}</p>}
+        </div>
 
-      <div className="footer">
-        {isOpen && (
-          <>
-            <button className="logout" onClick={handleLogout}>Cerrar sesión</button>
-            <p>&copy; Riko 2024</p>
-            <p className="rights">Todos los derechos reservados</p>
-          </>
-        )}
+        <div className="contentNav">
+          <ul>
+            {paths.map((item, index) => (
+              <Link
+                className="link"
+                to={item.path}
+                key={index}
+                onClick={() => handleItemClick(index)}
+              >
+                <li className={activeList === index ? 'active' : ''}>
+                  <span className="icon" style={{ marginRight: isOpen ? '10px' : '0' }}>
+                    {item.icon}
+                  </span>
+                  {isOpen && <span className="text">{item.name}</span>}
+                </li>
+              </Link>
+            ))}
+          </ul>
+        </div>
+
+        <div className="footer">
+          {isOpen && (
+            <>
+              <button className="logout" onClick={handleLogout}>Cerrar sesión</button>
+              <p>&copy; Riko 2024</p>
+              <p className="rights">Todos los derechos reservados</p>
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

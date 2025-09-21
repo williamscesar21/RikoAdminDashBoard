@@ -260,7 +260,7 @@ const RestaurantScreen = () => {
             <div className="restaurant-screen-info">
                 <div className="resScreenHeader">
                 <RestaurantImage restaurant={restaurant} />
-                    <div>
+                    <div style={{ marginLeft: '20px', flex: 1 }}>
                         {isEditing ? (
                             <input
                                 className="restaurant-name"

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../css/Repartidores.css';
 import Loading from './Loading';
-import { FaPhone, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import RepartidorImage from './RepartidorImage';
 
@@ -33,17 +32,18 @@ const Repartidores = () => {
             <h1>Repartidores</h1>
             <div className="repartidores-list">
                 {repartidores.map(repartidor => (
-                    <div onClick={() => goToRepartidorScreen(repartidor._id)} className="repartidor-card" key={repartidor._id}>
+                    <div 
+                        onClick={() => goToRepartidorScreen(repartidor._id)} 
+                        className="repartidor-card" 
+                        key={repartidor._id}
+                    >
                         <RepartidorImage repartidor={repartidor} />
-                        <div className="repartidor-info">
                         <h2>{repartidor.nombre} {repartidor.apellido}</h2>
-                        <p><FaPhone /> {repartidor.telefono}</p>
-                        <p><FaEnvelope /> {repartidor.email}</p>
-                        </div>
+                        <p className="repartidor-email">{repartidor.email}</p>
                     </div>
                 ))}
             </div>
-            <Link to="/repartidores/addrepartidor" className="add-client-button">+</Link>
+            <Link to="/repartidores/addrepartidor" className="add-repartidor-button">+</Link>
         </div>
     );
 };

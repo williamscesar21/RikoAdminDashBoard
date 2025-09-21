@@ -65,25 +65,18 @@ const Clients = () => {
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Email</th>
-                        <th>Teléfono</th>
-                        <th>Estatus</th>
-                        <th>Creado el</th>
-                        <th>Suspendido</th>
                     </tr>
                 </thead>
                 <tbody>
                     {filteredClients.map((client, index) => (
                         <tr onClick={() => handleCLientClick(client._id)} key={index}>
-                            <td>{client.nombre}</td>
-                            <td>{client.apellido}</td>
-                            <td>{client.email}</td>
-                            <td>{client.telefono}</td>
-                            <td>{client.estatus}</td>
-                            <td>{formatDate(client.createdAt)}</td>
-                            <td>{client.suspendido.toString()}</td>
+                        <td data-label="Nombre">{client.nombre}</td>
+                        <td data-label="Apellido">{client.apellido}</td>
+                        <td data-label="Email">{client.email}</td>
                         </tr>
                     ))}
                 </tbody>
+
             </table>
             <Link to="/clientes/addcliente" className="add-client-button">+</Link>
         </div>

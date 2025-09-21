@@ -8,57 +8,106 @@
 }
 
 .repartidores-container h1 {
-    font-size: 36px;
+    font-size: 28px;
     color: #333;
     margin-bottom: 20px;
+    text-align: center;
 }
 
+/* Grid responsive tipo catálogo */
 .repartidores-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
     width: 100%;
+    max-width: 1200px;
 }
 
+/* Card minimalista */
 .repartidor-card {
-    background-color: #ffffff;
-    border: 1px solid #e7e7e7;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 95%;
-    text-align: baseline;
-    transition: transform 0.2s;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
 }
 
 .repartidor-card:hover {
-    transform: scale(1.05);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.repartidor-card h2 {
-    font-size: 24px;
-    color: #333;
+/* Imagen cuadrada */
+.repartidor-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
     margin-bottom: 10px;
 }
 
-.repartidor-card p {
-    font-size: 18px;
-    color: #555;
+/* Nombre */
+.repartidor-card h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
     margin: 5px 0;
 }
 
-.repartidor-card p svg {
-    margin-right: 10px;
+/* Estilo del correo */
+.repartidor-email {
+    font-size: 14px;
+    color: #777;
+    margin: 5px 0;
+    word-break: break-word;
 }
 
-.repartidor-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
+
+/* Botón flotante */
+.add-repartidor-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    margin-right: 20px;
+    background-color: #ff6a00;
+    color: white;
+    font-size: 28px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.add-repartidor-button:hover {
+    background-color: #ff8a33;
+}
+
+/* 🔥 Responsividad */
+@media (max-width: 768px) {
+    .repartidores-list {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .repartidores-list {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .repartidor-card h2 {
+        font-size: 14px;
+    }
 }

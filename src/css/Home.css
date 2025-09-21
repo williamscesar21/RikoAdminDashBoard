@@ -22,7 +22,7 @@
   padding: 20px;
   background-color: var(--light-orange);
   /* border-radius: 30px; */
-  height: 95vh;
+  min-height: 95vh;
   width: 98.5%;
   margin-top: 15px;
   position: relative;
