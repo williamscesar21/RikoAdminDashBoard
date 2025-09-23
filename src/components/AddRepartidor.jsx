@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from '../../firebase';
@@ -22,14 +22,30 @@ const AddRepartidor = () => {
             foto_vehiculo: []
         },
         estatus: "Activo",
-        suspendido: false
+        suspendido: false,
+        restaurantId: "" // 👈 nuevo
     });
+
+    const [restaurants, setRestaurants] = useState([]);
 
     const [imageFile, setImageFile] = useState(null);
     const [vehicleImageFile, setVehicleImageFile] = useState(null);
     const [profileImagePreview, setProfileImagePreview] = useState(null);
     const [vehicleImagePreview, setVehicleImagePreview] = useState(null);
     const [notification, setNotification] = useState({ visible: false, mensaje: '', tipo: '' });
+
+    // 🔹 Obtener restaurantes al cargar
+    useEffect(() => {
+        const fetchRestaurants = async () => {
+            try {
+                const { data } = await axios.get('https://rikoapi.onrender.com/api/restaurant/restaurants');
+                setRestaurants(data);
+            } catch (error) {
+                console.error("Error fetching restaurants:", error);
+            }
+        };
+        fetchRestaurants();
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -51,7 +67,7 @@ const AddRepartidor = () => {
     };
 
     const handleImageChange = (e, setImageFileState, setImagePreviewState) => {
-        const file = e.target.files[0];
+        const file = e.target.files?.[0];
         if (file) {
             setImageFileState(file);
             const previewUrl = URL.createObjectURL(file);
@@ -91,34 +107,29 @@ const AddRepartidor = () => {
             }
         };
 
-        // Verificar que todos los campos requeridos estén presentes
-        const { nombre, email, password, telefono, foto_perfil } = repartidorPayload;
-        if (!nombre || !email || !password || !telefono || foto_perfil.length === 0) {
+        const { nombre, email, password, telefono, foto_perfil, restaurantId } = repartidorPayload;
+        if (!nombre || !email || !password || !telefono || foto_perfil.length === 0 || !restaurantId) {
             setNotification({
                 visible: true,
-                mensaje: 'Todos los campos son requeridos',
+                mensaje: 'Todos los campos son requeridos (incluido Restaurante)',
                 tipo: 'error'
             });
             return;
         }
 
         try {
-            const response = await axios.post('https://rikoapi.onrender.com/api/repartidor/repartidor', repartidorPayload);
+            await axios.post('https://rikoapi.onrender.com/api/repartidor/repartidor', repartidorPayload);
             setNotification({
                 visible: true,
                 mensaje: 'Repartidor agregado con éxito',
                 tipo: 'exitoso'
             });
             setTimeout(() => {
-                setNotification({
-                    visible: false,
-                    mensaje: '',
-                    tipo: ''
-                });
+                setNotification({ visible: false, mensaje: '', tipo: '' });
             }, 3000);
             window.location.reload();
         } catch (error) {
-            console.error("There was an error adding the repartidor!", error);
+            console.error("Error al agregar el repartidor!", error);
             setNotification({
                 visible: true,
                 mensaje: 'Error al agregar el repartidor. Inténtelo de nuevo.',
@@ -156,6 +167,25 @@ const AddRepartidor = () => {
                     Ubicación:
                     <input type="text" name="location" value={repartidorData.location} onChange={handleChange} required />
                 </label>
+
+                {/* 🔹 Select de Restaurantes */}
+                <label>
+                    Restaurante:
+                    <select
+                        name="restaurantId"
+                        value={repartidorData.restaurantId}
+                        onChange={handleChange}
+                        required
+                    >
+                        <option value="">Seleccione un restaurante</option>
+                        {restaurants.map((rest) => (
+                            <option key={rest._id} value={rest._id}>
+                                {rest.nombre}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+
                 <div className="image-upload-container">
                     <label>
                         Foto de Perfil:
@@ -163,6 +193,7 @@ const AddRepartidor = () => {
                     </label>
                     {profileImagePreview && <img src={profileImagePreview} alt="Vista previa de la foto de perfil" className="image-preview" />}
                 </div>
+
                 <h3>Datos del Vehículo:</h3>
                 <label>
                     Matrícula:
@@ -187,6 +218,7 @@ const AddRepartidor = () => {
                     </label>
                     {vehicleImagePreview && <img src={vehicleImagePreview} alt="Vista previa de la foto del vehículo" className="image-preview" />}
                 </div>
+
                 <button type="submit">Agregar Repartidor</button>
             </form>
         </div>

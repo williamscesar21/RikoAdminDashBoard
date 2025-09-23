@@ -243,7 +243,7 @@ const RepartidorScreen = () => {
     return (
         <div className="repartidor-screen-container">
             <div className="repartidor-name">
-                <RepartidorImage repartidor={repartidor}/>
+                <img src={repartidor.foto_perfil[0]} alt="" className="repartidor-image2" />
                 <div className="repartidor-name-container">
                         {isEditing ? (
                             <>
